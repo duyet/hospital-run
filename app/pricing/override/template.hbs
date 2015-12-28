@@ -1,0 +1,17 @@
+{{#modal-dialog
+    isUpdateDisabled=isUpdateDisabled
+    title=title
+    updateButtonAction=updateButtonAction
+    updateButtonText=updateButtonText }}
+  {{#em-form model=model submitButton=false}}
+    {{em-select label="Pricing Profile"
+      property="profile"
+      content=pricingProfiles
+      optionValuePath="selectObject"
+      optionLabelPath="selectObject.name"
+      class="required pricing-profile"
+      prompt=" "
+    }}
+    {{em-input label="Price" property="price" class="required pricing-override-price"}}
+  {{/em-form}}
+{{/modal-dialog}}

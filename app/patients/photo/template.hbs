@@ -1,0 +1,20 @@
+{{#modal-dialog
+    hideCancelButton=hideCancelButton
+    hideUpdateButton=hideUpdateButton
+    isUpdateDisabled=isUpdateDisabled
+    title=title
+    updateButtonAction=updateButtonAction
+    updateButtonText=updateButtonText }}
+  {{#em-form model=model submitButton=false }}
+    {{#if model.isNew}}
+      {{take-photo photoFile=model.photoFile }}
+    {{else}}
+      <div class="thumbnail">
+        <img alt={{model.caption}} src={{model.url}} class="img-responsive" >
+      </div>
+    {{/if}}
+    <div class="row">
+      {{em-input property="caption" label="Caption"}}
+    </div>
+  {{/em-form}}
+{{/modal-dialog}}

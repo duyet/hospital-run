@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <img src={{barcodeUri}}>
+  </div>
+</div>
+
+{{#if havePrinters}}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Print Barcode</h3>
+    </div>    
+    <div class="panel-body">
+        <div class="form-group">            
+            {{#unless singlePrinter}}    
+                <label for="printerSelect">Printer</label>
+                {{select-list 
+                    content=printers 
+                    optionLabelPath='name' 
+                    optionValuePath='name' 
+                    value=selectedPrinter 
+                    class="form-control" 
+                    action=(action (mut selectedPrinter))
+                    id="printerSelect"
+                }}            
+            {{/unless}}
+        </div>
+        <button class="btn btn-primary" {{action 'print'}}><span class=" glyphicon glyphicon-print"></span> Print</button>
+    </div>
+</div>
+{{/if}}
+

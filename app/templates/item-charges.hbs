@@ -1,0 +1,41 @@
+{{#if organizeByType}}
+    {{partial 'charges-by-type'}}
+{{else}}
+    <div class="panel detail-section">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Charged Items
+                {{#if canAddCharge}}
+                    <button class="btn btn-primary align-right" {{action "showAddCharge" bubbles=false }}><span class="octicon octicon-plus"></span>Add Item</button>
+                {{/if}}
+            </h3>
+        </div>
+        <div class="panel-body detail-section-content">
+            <table class="table">
+                <tr class="table-header">
+                    <th>Date</th>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+                {{#each model.charges as |charge|}}
+                    {{#unless charge.medicationCharge}}
+                        <tr>
+                            <td>{{date-format charge.dateCharged}}</td>
+                            <td>{{charge.pricingItem.name}}</td>
+                            <td>{{charge.quantity}}</td>
+                            <td>
+                                {{#if canAddCharge}}
+                                    <button class="btn btn-default neutral" {{action "showEditCharge" charge}}>Edit</button>
+                                    <button class="btn btn-default warning" {{action "showDeleteCharge" charge bubbles=false }}>
+                                        <span class="octicon octicon-x"></span>Delete
+                                    </button>
+                                {{/if}}
+                            </td>
+                        </tr>
+                    {{/unless}}
+                {{/each}}
+            </table>
+        </div>
+    </div>
+{{/if}}
